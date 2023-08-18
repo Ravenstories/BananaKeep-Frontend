@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import * as signalR from '@aspnet/signalr';
 import { I_Notification } from '../interfaces/i_notification';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignalrService {
-  public data: [] | undefined;
+  public data: I_Notification[] | undefined;
 
   private hubConnection!: signalR.HubConnection; 
     public startConnection = () => {
@@ -20,9 +22,10 @@ export class SignalrService {
     }
     
     public addTransferDataListener = () => {
-      this.hubConnection.on('transferdata', (data) => {
+      this.hubConnection.on('TransferIncidentData', (data) => {
         this.data = data;
-        console.log(data);
+        console.log("this.data: ", this.data);
       });
-    }
+  }
+
 }

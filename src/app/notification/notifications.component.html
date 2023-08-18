@@ -1,14 +1,50 @@
 <div class="content">
     
-    <h1>
-      Notifications
-    </h1>
-    
-    
-    
-    <div *ngFor="let notification of notifications">
-        {{ notification }}
+  <h1>
+    Notifications
+  </h1>
+  
+  
+  <div style="display: block" *ngIf='signalrService.data'>
+    <div *ngFor="let notification of signalrService.data">
+      <div class="notification">
+        <h2>Notification Details</h2>
+          <p><strong>ID:</strong> {{ notification.id }}</p>
+          <p><strong>Dismissed:</strong> {{ notification.dismissed ? 'Yes' : 'No' }}</p>
+          <p><strong>Triggered Timestamp:</strong> {{ notification.triggeredTimestamp }}</p>
+
+          <h3>GPS Unit Details</h3>
+          <p><strong>ID:</strong> {{ notification.gpsUnit.id }}</p>
+          <p><strong>Name:</strong> {{ notification.gpsUnit.name }}</p>
+          <p><strong>Active:</strong> {{ notification.gpsUnit.active ? 'Yes' : 'No' }}</p>
+          <p><strong>Altitude:</strong> {{ notification.gpsUnit.altitude }}</p>
+          <p><strong>Latitude:</strong> {{ notification.gpsUnit.latitude }}</p>
+          <p><strong>Longitude:</strong> {{ notification.gpsUnit.longitude }}</p>
+          <p><strong>Timestamp:</strong> {{ notification.gpsUnit.timestamp }}</p>
+  
+        <h3>Logs</h3>
+        <ul>
+          <li *ngFor="let log of notification.logs">
+            <p><strong>Incident ID:</strong> {{ log.incidentID }}</p>
+            <p><strong>Timestamp:</strong> {{ log.timestamp }}</p>
+            <p><strong>Longitude:</strong> {{ log.longitude }}</p>
+            <p><strong>Latitude:</strong> {{ log.latitude }}</p>
+            <p><strong>Altitude:</strong> {{ log.altitude }}</p>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
+  
+  
+  <div>
+    <pre> 
+      <code>
+          {{ this.signalrService.data | json }}
+      </code>
+    </pre>
+  </div>
 </div>
+    
 
   

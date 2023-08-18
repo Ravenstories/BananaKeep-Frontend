@@ -13,16 +13,5 @@ export class AppComponent implements OnInit {
   constructor(public signalRService: SignalrService, private http: HttpClient) { }
   ngOnInit() {
     this.signalRService.startConnection();
-    this.signalRService.addTransferDataListener();   
-    this.startHttpRequest();
   }
-  
-  private startHttpRequest = () => {
-    this.http.get('https://localhost:7001/ws/Incident')
-      .subscribe(res => {
-        console.log('res');
-        console.log(res);
-      })
-  }
-  
 }
