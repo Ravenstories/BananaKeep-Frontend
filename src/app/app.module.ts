@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotificationsComponent } from './notification/notifications.component';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgChartsModule } from 'ng2-charts';
 
 
 const routes: Routes = [
@@ -23,6 +25,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    NgChartsModule,
     RouterModule.forRoot(
       routes,
       { enableTracing: true } // <-- debugging purposes only
