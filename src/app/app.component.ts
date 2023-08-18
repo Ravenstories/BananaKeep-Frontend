@@ -13,12 +13,12 @@ export class AppComponent {
   constructor(public signalRService: SignalrService, private http: HttpClient) { }
   ngOnInit() {
     this.signalRService.startConnection();
-    this.signalRService.addTransferChartDataListener();   
+    this.signalRService.addTransferDataListener();   
     this.startHttpRequest();
   }
   
   private startHttpRequest = () => {
-    this.http.get('https://localhost:5001/api/chart')
+    this.http.get('https://localhost:7001/ws/get')
       .subscribe(res => {
         console.log(res);
       })

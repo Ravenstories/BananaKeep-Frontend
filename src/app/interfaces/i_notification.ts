@@ -1,4 +1,4 @@
-export interface ChartModel {
+export interface I_Notification {
     data: [],
     label: string
     backgroundColor: string
