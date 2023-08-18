@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SignalrService } from './services/signalr.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'BananaKeep-Frontend';
 
   constructor(public signalRService: SignalrService, private http: HttpClient) { }
@@ -18,9 +18,11 @@ export class AppComponent {
   }
   
   private startHttpRequest = () => {
-    this.http.get('https://localhost:7001/ws/get')
+    this.http.get('https://localhost:7001/ws/Incident')
       .subscribe(res => {
+        console.log('res');
         console.log(res);
       })
   }
+  
 }
