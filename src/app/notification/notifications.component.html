@@ -4,7 +4,19 @@
     Notifications
   </h1>
   
-  
+  <div style="display: block" *ngIf='signalrService.data'>
+    <div *ngFor="let notification of signalrService.data">
+      <div class="notification">
+        <h2>Alarm!</h2>
+          <p><strong>Name:</strong> {{ notification.gpsUnit.name }}</p>
+          <p><strong>Timestamp:</strong> {{ notification.gpsUnit.timestamp }}</p>
+          <button>Dismiss</button>
+          <button>More Info</button>
+          
+      </div>
+    </div>
+  </div>
+
   <div style="display: block" *ngIf='signalrService.data'>
     <div *ngFor="let notification of signalrService.data">
       <div class="notification">
