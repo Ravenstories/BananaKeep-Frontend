@@ -20,7 +20,7 @@ export class NotificationsComponent implements OnInit {
 
 
   public startHttpRequest = () => {
-    this.http.get('https://localhost:7001/ws/Incident')
+    this.http.get('http://192.168.1.133:5257/ws/Incident')
       .subscribe(res => {
         console.log("startHttpRequest ", res);
       })
