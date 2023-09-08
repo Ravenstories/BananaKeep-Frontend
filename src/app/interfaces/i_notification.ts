@@ -1,8 +1,8 @@
 export interface I_Notification {
     id: number;
-    dismissed: boolean;
+    dismissed: boolean | null;
     triggeredTimestamp: string;
-    gpsUnit: GpsUnit;
+    gpsUnitID: number;
     logs: Logs[];
 }
 
